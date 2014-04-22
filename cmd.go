@@ -16,6 +16,7 @@ func init() {
 	CmdList = []*Cmd{
 		CmdVersion,
 		CmdInit,
+		CmdHelp,
 	}
 }
 
@@ -25,7 +26,7 @@ func CommandDispatch(args []string) error {
 	var commandArgs = make([]string, 0)
 
 	if len(args) < 2 {
-		commandName = "version"
+		commandName = "help"
 	} else {
 		commandName = args[1]
 	}
