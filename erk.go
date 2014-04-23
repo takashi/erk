@@ -11,8 +11,6 @@ func exitIfError(err error) {
 
 func main() {
 	var args = os.Args
-	// err := LoadConfig()
-	// exitIfError(err)
 	err := CommandDispatch(args)
 	exitIfError(err)
 }
