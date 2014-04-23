@@ -14,11 +14,11 @@ type RemoteConfig struct {
 }
 
 type Config struct {
-	Dirs   []string
-	Files  []string
-	Format string
-	Remote RemoteConfig `json: "remote_config"`
-	Ignore []string
+	Dirs         []string
+	Files        []string
+	Remote       bool
+	RemoteConfig RemoteConfig `json: "remote_config"`
+	Ignore       []string
 }
 
 func LoadConfig() (Config, error) {
