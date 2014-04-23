@@ -40,6 +40,15 @@ func CommandDispatch(args []string) error {
 
 	if command == nil {
 		return fmt.Errorf("Command \"%s\" not found", commandName)
+	} else if command.Name != "init" &&
+		command.Name != "help" &&
+		commandName != "version" {
+		config, err := LoadConfig()
+		if err != nil {
+			return err
+		}
+		err = command.Fn(commandArgs, config)
+		return err
 	}
 
 	err := command.Fn(commandArgs)
