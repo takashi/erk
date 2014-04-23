@@ -7,7 +7,7 @@ type Cmd struct {
 	Desc    string
 	Args    []string
 	Aliases []string
-	Fn      func(args []string) error
+	Fn      func(args []string, config Config) error
 }
 
 var CmdList []*Cmd
@@ -24,6 +24,7 @@ func CommandDispatch(args []string) error {
 	var command *Cmd
 	var commandName string
 	var commandArgs = make([]string, 0)
+	var config Config
 
 	if len(args) < 2 {
 		commandName = "help"
@@ -50,7 +51,6 @@ func CommandDispatch(args []string) error {
 		err = command.Fn(commandArgs, config)
 		return err
 	}
-
-	err := command.Fn(commandArgs)
+	err := command.Fn(commandArgs, config)
 	return err
 }
