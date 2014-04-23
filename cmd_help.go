@@ -23,7 +23,7 @@ func Ljust(word string, length int) string {
 var CmdHelp = &Cmd{
 	Name: "help",
 	Desc: "show help.",
-	Fn: func(args []string) error {
+	Fn: func(args []string, config Config) error {
 		fmt.Printf(`erk v%s
 Usage: erk commands are:
 

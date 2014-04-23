@@ -8,7 +8,7 @@ import (
 var CmdInit = &Cmd{
 	Name: "init",
 	Desc: "Creates erkconf.json file to configurate.",
-	Fn: func(args []string) error {
+	Fn: func(args []string, config Config) error {
 		// check if configuration file already exists.
 		if CheckFileExistence(CONF_FILENAME) {
 			return fmt.Errorf("%s is already exists... ;)", CONF_FILENAME)
