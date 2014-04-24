@@ -17,6 +17,7 @@ type Config struct {
 	Dirs         []string
 	Files        []string
 	Remote       bool
+	Label        string
 	RemoteConfig RemoteConfig `json: "remote_config"`
 	Ignore       IgnoreList
 }
