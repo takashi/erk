@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 type Lang struct {
 	Name             string
 	Ext              string
@@ -17,7 +15,7 @@ func init() {
 	}
 }
 
-func DetectLangFromExt(ext string) (*Lang, error) {
+func DetectLangFromExt(ext string) *Lang {
 	var lang *Lang
 
 	for _, l := range LangList {
@@ -28,7 +26,7 @@ func DetectLangFromExt(ext string) (*Lang, error) {
 	}
 
 	if lang == nil {
-		return nil, fmt.Errorf("The file which has \"%s\" extension is not supported.", ext)
+		return nil
 	}
-	return lang, nil
+	return lang
 }
