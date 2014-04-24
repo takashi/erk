@@ -2,15 +2,11 @@ package main
 
 import "os"
 
-func exitIfError(err error) {
+func main() {
+	var args = os.Args
+	err := CommandDispatch(args)
 	if err != nil {
 		log_error("error %v", err)
 		os.Exit(1)
 	}
-}
-
-func main() {
-	var args = os.Args
-	err := CommandDispatch(args)
-	exitIfError(err)
 }
