@@ -1,7 +1,7 @@
 package main
 
 var CmdRun = &Cmd{
-	Name: "update",
+	Name: "run",
 	Desc: "run erk to search inline issue.",
 	Fn: func(args []string) error {
 		basePath := "/Users/tak0303/src/beatrobo/PlugAir-Manage-API/"
