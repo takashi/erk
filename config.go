@@ -18,7 +18,7 @@ type Config struct {
 	Files        []string
 	Remote       bool
 	RemoteConfig RemoteConfig `json: "remote_config"`
-	Ignore       []string
+	Ignore       IgnoreList
 }
 
 func LoadConfig() (Config, error) {
