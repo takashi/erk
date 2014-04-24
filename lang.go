@@ -12,7 +12,9 @@ type Lang struct {
 var LangList []*Lang
 
 func init() {
-	LangList = []*Lang{}
+	LangList = []*Lang{
+		LangRuby,
+	}
 }
 
 func DetectLangFromExt(ext string) (*Lang, error) {
