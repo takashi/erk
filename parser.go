@@ -29,12 +29,15 @@ func WalkFn(path string, info os.FileInfo, err error) error {
 	} else if info.IsDir() {
 		// do nothing
 	} else {
-		ParseIssues(path string, info os.FileInfo)
+		err := ParseIssues(path, info)
+		if err != nil {
+			return err
+		}
 	}
 	return nil
 }
 
-func ParseIssues() {
+func ParseIssues(path string, info os.FileInfo) error {
 	// do the file parse here
 	lang := DetectLangFromExt(filepath.Ext(path))
 	if lang != nil {
@@ -42,10 +45,11 @@ func ParseIssues() {
 		if err != nil {
 			return err
 		}
-		re, _ := regexp.Compile(`# \[TODO\].*`)
+		re, _ := regexp.Compile(lang.OneLineComment + ` \[TODO\].*`)
 		one := re.Find(body)
 		if one != nil {
 			fmt.Printf("Find a TODO: %s \n    at %s\n", one, path)
 		}
 	}
+	return nil
 }

@@ -1,6 +1,7 @@
 package main
 
 var LangRuby = &Lang{
-	Name: "ruby",
-	Ext:  ".rb",
+	Name:           "Ruby",
+	Ext:            ".rb",
+	OneLineComment: "#",
 }
