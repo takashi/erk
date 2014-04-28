@@ -8,3 +8,5 @@ type Issue struct {
 	Line     int
 	Md5      string
 }
+
+var IssueList []*Issue
