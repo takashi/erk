@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"github.com/wsxiaoys/terminal/color"
 )
 
 // add space to line up
@@ -24,7 +25,9 @@ var CmdHelp = &Cmd{
 	Name: "help",
 	Desc: "show help.",
 	Fn: func(args []string) error {
-		fmt.Printf(`erk v%s
+		color.Printf(`@{g}erk@{|} inline issue manager
+v%s
+
 Usage: erk commands are:
 
 `, VERSION)
