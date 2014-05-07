@@ -68,7 +68,27 @@ func ParseIssuesByLang(lang *language.Lang, path string, info os.FileInfo) error
 		one := re.Find([]byte(scanner.Text()))
 		if one != nil {
 			title := strings.TrimPrefix(string(commnentLabelRe.ReplaceAll(one, []byte(""))), " ")
-			issue := &Issue{Title: title, FileName: info.Name(), Label: config.Label, Line: line, FilePath: path}
+			frag := scanner.Text() + "\n"
+
+			// copy scanner instance
+			s := *scanner
+			i := 0
+			// get 10 line under the todo.
+			for s.Scan() {
+				if i > 10 {
+					break
+				}
+				frag += (s.Text() + "\n")
+				i++
+			}
+
+			issue := &Issue{
+				Title:    title,
+				FileName: info.Name(),
+				Label:    config.Label,
+				Line:     line,
+				FilePath: path,
+				Fragment: frag}
 			IssueList = append(IssueList, issue)
 		}
 		line += 1
