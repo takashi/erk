@@ -1,7 +1,7 @@
 package main
 
 type Adapter interface {
-	Update( /*[]*Issue*/) error
+	Update() error
 }
 
 func HasRemoteConfiguration() bool {
