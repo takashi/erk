@@ -6,20 +6,18 @@ import (
 	"io/ioutil"
 )
 
-type RemoteConfig struct {
-	Host     string
-	Repo     string
-	Api      string
-	ApiToken string `json: "api_token"`
+type Config struct {
+	Dirs         []string     `json:"dirs, omitempty"`
+	Files        []string     `json:"files, omitempty"`
+	Remote       bool         `json:"remote"`
+	Label        string       `json:"label"`
+	RemoteConfig RemoteConfig `json:"remote_config, omitempty"`
+	Ignore       IgnoreList   `json:"ignore"`
 }
 
-type Config struct {
-	Dirs         []string
-	Files        []string
-	Remote       bool
-	Label        string
-	RemoteConfig RemoteConfig `json: "remote_config"`
-	Ignore       IgnoreList
+type RemoteConfig struct {
+	Repo     string `json:"repo"`
+	ApiToken string `json:"api_token"`
 }
 
 func LoadConfig() (Config, error) {
