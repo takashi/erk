@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"github.com/takashi/erk/language"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -39,7 +40,7 @@ func WalkFn(path string, info os.FileInfo, err error) error {
 
 func ParseIssues(path string, info os.FileInfo) error {
 	// do the file parse here
-	lang := DetectLangFromExt(filepath.Ext(path))
+	lang := language.DetectLangFromExt(filepath.Ext(path))
 	if lang != nil {
 		err := ParseIssuesByLang(lang, path, info)
 		if err != nil {
@@ -49,7 +50,7 @@ func ParseIssues(path string, info os.FileInfo) error {
 	return nil
 }
 
-func ParseIssuesByLang(lang *Lang, path string, info os.FileInfo) error {
+func ParseIssuesByLang(lang *language.Lang, path string, info os.FileInfo) error {
 	file, err := os.Open(path)
 	if err != nil {
 		return err
