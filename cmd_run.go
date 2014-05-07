@@ -30,6 +30,10 @@ Run in: %s
 
 `, issue.Label, issue.FilePath, issue.Line, issue.Title)
 		}
+		if HasRemoteConfiguration() {
+			var adapter Adapter = &AdapterGithub{}
+			adapter.Update()
+		}
 		return nil
 	},
 }
