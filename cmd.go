@@ -25,28 +25,28 @@ func init() {
 
 func CommandDispatch(args []string) error {
 	var command *Cmd
-	var commandName string
+	var name string
 	var commandArgs = make([]string, 0)
 	var err error
 
 	if len(args) < 2 {
-		commandName = "help"
+		name = "help"
 	} else {
-		commandName = args[1]
+		name = args[1]
 	}
 
 	for _, cmd := range CmdList {
-		if cmd.Name == commandName {
+		if cmd.Name == name {
 			command = cmd
 			break
 		}
 	}
 
 	if command == nil {
-		return fmt.Errorf("Command \"%s\" not found", commandName)
-	} else if command.Name != "init" &&
-		command.Name != "help" &&
-		commandName != "version" {
+		return fmt.Errorf("Command \"%s\" not found", name)
+	} else if name != "init" &&
+		name != "help" &&
+		name != "version" {
 		config, err = LoadConfig()
 		if err != nil {
 			return err
