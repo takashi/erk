@@ -1,4 +1,4 @@
-package main
+package language
 
 var LangJs = &Lang{
 	Name:           "JavaScript",

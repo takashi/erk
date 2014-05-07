@@ -1,4 +1,4 @@
-package main
+package language
 
 var LangRuby = &Lang{
 	Name:           "Ruby",
