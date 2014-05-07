@@ -1,0 +1,8 @@
+{
+  "label": "todo",
+  "remote": true,
+  "remote_config": {
+    "repo": "takashi/erk",
+    "api_token": "e1e99726fbf2709c488dc175a55d968f5eddb67e"
+  }
+}

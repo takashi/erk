@@ -30,6 +30,7 @@ Run in: %s
 
 `, issue.Label, issue.FilePath, issue.Line, issue.Title)
 		}
+		color.Printf("updating remote issues...\n")
 		if HasRemoteConfiguration() {
 			var adapter Adapter = &AdapterGithub{}
 			adapter.Update()

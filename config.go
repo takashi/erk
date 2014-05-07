@@ -28,6 +28,7 @@ func LoadConfig() (Config, error) {
 	}
 
 	// read json config file.
+	// [todo] - lint json file syntax
 	body, err := ioutil.ReadFile(CONF_FILENAME)
 	if err != nil {
 		return c, err
