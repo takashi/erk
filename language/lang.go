@@ -13,6 +13,7 @@ func init() {
 	LangList = []*Lang{
 		LangRuby,
 		LangJs,
+		LangGo,
 	}
 }
 
