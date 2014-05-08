@@ -28,7 +28,7 @@ func LoadConfig() (Config, error) {
 	}
 
 	// read json config file.
-	// [todo] - lint json file syntax
+	// [todo] - lint json file syntax(is there some json linting impl for golang?)
 	body, err := ioutil.ReadFile(CONF_FILENAME)
 	if err != nil {
 		return c, err
