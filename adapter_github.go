@@ -36,7 +36,7 @@ func (d *AdapterGithub) Update() error {
 				closedIssueTitles = append(closedIssueTitles, i.Title)
 				already++
 			} else {
-				frag := fmt.Sprintf("filename: %s\nline: %d\nlabel: %s\n\n```go\n%s\n```\n", i.FilePath, i.Line, i.Label, i.Fragment)
+				frag := fmt.Sprintf("filename: %s\nline: %d\nlabel: %s\n\n```%s\n%s\n```\n", i.FilePath, i.Line, i.Label, i.Lang, i.Fragment)
 				labels := []string{"erk", i.Label}
 				_, _, err := client.Issues.Create(repoInfo[0], repoInfo[1], &github.IssueRequest{Title: &i.Title, Body: &frag, Labels: labels})
 				if err != nil {
@@ -55,7 +55,7 @@ func (d *AdapterGithub) Update() error {
 				if roi != nil {
 					already++
 				} else {
-					frag := fmt.Sprintf("filename: %s\nline: %d\nlabel: %s\n\n```go\n%s\n```\n", i.FilePath, i.Line, i.Label, i.Fragment)
+					frag := fmt.Sprintf("filename: %s\nline: %d\nlabel: %s\n\n```%s\n%s\n```\n", i.FilePath, i.Line, i.Label, i.Lang, i.Fragment)
 					labels := []string{"erk", i.Label}
 					_, _, err := client.Issues.Create(repoInfo[0], repoInfo[1], &github.IssueRequest{Title: &i.Title, Body: &frag, Labels: labels})
 					if err != nil {

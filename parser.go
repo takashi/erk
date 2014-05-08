@@ -88,7 +88,8 @@ func ParseIssuesByLang(lang *language.Lang, path string, info os.FileInfo) error
 				Label:    config.Label,
 				Line:     line,
 				FilePath: path,
-				Fragment: frag}
+				Fragment: frag,
+				Lang:     lang.Name}
 			IssueList = append(IssueList, issue)
 		}
 		line += 1

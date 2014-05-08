@@ -6,6 +6,7 @@ type Issue struct {
 	FilePath string
 	Fragment string
 	Label    string
+	Lang     string
 	Line     int
 	Md5      string
 }
