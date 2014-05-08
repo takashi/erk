@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/wsxiaoys/terminal/color"
 	"os"
 )
@@ -30,10 +31,14 @@ Run in: %s
 
 `, issue.Label, issue.FilePath, issue.Line, issue.Title)
 		}
-		color.Printf("updating remote issues...\n")
-		if HasRemoteConfiguration() {
-			var adapter Adapter = &AdapterGithub{}
-			adapter.Update()
+		if runWithRemote {
+			color.Printf("updating remote issues...\n")
+			if HasRemoteConfiguration() {
+				var adapter Adapter = &AdapterGithub{}
+				adapter.Update()
+			} else {
+				return fmt.Errorf("Configuration file: can't load remote_config option successfully. please check your %s.", CONF_FILENAME)
+			}
 		}
 		return nil
 	},

@@ -42,6 +42,8 @@ func CommandDispatch(args []string) error {
 		}
 	}
 
+	LoadArgs()
+
 	if command == nil {
 		return fmt.Errorf("Command \"%s\" not found", name)
 	} else if name != "init" &&
