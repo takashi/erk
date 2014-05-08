@@ -19,12 +19,7 @@ var CmdRun = &Cmd{
 		if err != nil {
 			return err
 		}
-		color.Printf(`--------------------------
-@{g}erk@{|} - inline issue manager
-Run in: %s
---------------------------
-
-`, basePath)
+		color.Printf(INIT_MESSAGE, basePath)
 		for _, issue := range IssueList {
 			color.Printf(`[@{!b}%s@{|}] at @{!c}%s@{|}
   line %d - @{!w}%s
@@ -34,6 +29,7 @@ Run in: %s
 		if runWithRemote {
 			color.Printf("updating remote issues...\n")
 			if HasRemoteConfiguration() {
+				// [todo] - supports other adapters(for bitbucket?)
 				var adapter Adapter = &AdapterGithub{}
 				adapter.Update()
 			} else {
